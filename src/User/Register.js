@@ -1,6 +1,8 @@
 import React from 'react';
 import Lottie from 'lottie-react'
 import eating from '../assets/LottieAnimation/eating.json'
+import { FaCamera, FaKey, FaMailBulk, FaUser, FaVoicemail } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
@@ -17,69 +19,68 @@ const Register = () => {
             {<Lottie animationData={eating} loop={true}></Lottie>}
             </div>
             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-              <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
+              <div className="bg-yellow rounded shadow-2xl p-7 sm:p-10">
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                  Sign up for updates
+                  Register
                 </h3>
                 <form>
                   <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="firstName"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      First name
-                    </label>
-                    <input
-                      placeholder="John"
-                      required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="firstName"
-                      name="firstName"
-                    />
+                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                        <FaUser className='absolute left-4 top-[30%] text-black '></FaUser>
+                        <input
+                        placeholder="Username"
+                        required
+                        type="text"
+                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        id="userName"
+                        name="userName"
+                        />
+                    </div>
+                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                        <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
+                        <input
+                        placeholder="email"
+                        required
+                        type="text"
+                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        id="email"
+                        name="email"
+                        />
+                    </div>
+                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                        <FaCamera  className='absolute left-4 top-[30%] text-black '></FaCamera>
+                        <input
+                        placeholder="photoURL"
+                        required
+                        type="text"
+                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        id="photoURL"
+                        name="photoURL"
+                        />
+                    </div>
+                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                        <FaKey className='absolute left-4 top-[30%] text-black '></FaKey>
+                        <input
+                        placeholder="password"
+                        required
+                        type="text"
+                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        id="password"
+                        name="password"
+                        />
+                    </div>
                   </div>
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="lastName"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      Last name
-                    </label>
-                    <input
-                      placeholder="Doe"
-                      required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="lastName"
-                      name="lastName"
-                    />
-                  </div>
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="email"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      E-mail
-                    </label>
-                    <input
-                      placeholder="john.doe@example.org"
-                      required
-                      type="text"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="email"
-                      name="email"
-                    />
-                  </div>
+                  
                   <div className="mt-4 mb-2 sm:mb-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                      className="inline-flex items-center justify-center w-full py-3 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
                     >
                       Subscribe
                     </button>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
-                    We respect your privacy. Unsubscribe at any time.
+                    Already have an account ?<Link to="/login" className='font-semibold'>Login</Link>
                   </p>
                 </form>
               </div>
