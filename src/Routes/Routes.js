@@ -1,8 +1,10 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Reviews from "../Pages/MyReviews/Reviews";
 import AllService from "../Pages/Services/AllService";
+import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import Login from "../User/Login";
 import Register from "../User/Register";
@@ -19,7 +21,11 @@ import Register from "../User/Register";
         loader:async()=>fetch('http://localhost:5000/services'),
         element:<AllService></AllService>},
         {path:'/login',element:<Login></Login>},
-        {path:'/register',element:<Register></Register>}
+        {path:'/register',element:<Register></Register>},
+        {path:'/serviceDetails/:id',
+        loader:async()=>fetch(`http://localhost:5000/services/6369bcd164ad4e49c90849e4`),
+        element:<ServiceDetails></ServiceDetails>
+    }
 
     ]
     }

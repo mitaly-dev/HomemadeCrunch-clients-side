@@ -2,24 +2,67 @@ import React from 'react';
 import Lottie from 'lottie-react'
 import eating from '../assets/LottieAnimation/eating.json'
 import { FaCamera, FaKey, FaMailBulk, FaUser, FaVoicemail } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Register = () => {
+    const {
+        user,
+        createUser,
+        updateUserProfile,
+        logOut
+    } = useContext(AuthContext)
+    const navigate = useNavigate()
+  
     const [formData,setFormData] = useState({
         userName:"",
         email:"",
         photoURL:"",
         password:""
     })
+    const {userName,email,photoURL,password} = formData
     
+    // get input value
     const handleInputData=(event)=>{
         const name = event.target.name 
         const value = event.target.value 
-        console.log(name,value)
-        setFormData({...formData,[name]:value})
+        if(name==="password" && value.length<6){
+            toast.error("Password should be at least 6 character",{autoClose:1500})
+            return setFormData({...formData,[name]:""})
+        }
+        else{
+            setFormData({...formData,[name]:value})
+        }
     }
 
+    // create user
+    const createUserHandle=(event)=>{
+        event.preventDefault()
+        if(userName && email && password && photoURL){
+            createUser(email,password)
+            .then(result=>{
+                updateProfileHandle()
+                toast.success("Register successfull,please log in",{autoClose:1000})
+                logOut()
+                navigate('/login')
+            })
+            .catch(error=>toast.error(error.message,{autoClose:1500}))
+        }
+    }
+
+    // update user profile
+    const updateProfileHandle=()=>{
+        const profile={
+            displayName:userName,
+            photoURL
+        }
+        updateUserProfile(profile)
+        .then(result=>{})
+        .catch(error=>toast.error(error.message,{autoClose:1500}))
+    }
 
 
     return (
@@ -40,52 +83,52 @@ const Register = () => {
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Register
                 </h3>
-                <form>
+                <form onSubmit={createUserHandle}>
                   <div className="mb-1 sm:mb-2">
-                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                    <div className='relative  mb-3'>
                         <FaUser className='absolute left-4 top-[30%] text-black '></FaUser>
                         <input
                         onBlur={handleInputData}
                         placeholder="Username"
                         required
                         type="text"
-                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
                         id="userName"
                         name="userName"
                         />
                     </div>
-                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                    <div className='relative  mb-3'>
                         <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
                         <input
                         onBlur={handleInputData}
                         placeholder="email"
                         required
-                        type="text"
-                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        type="email"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
                         id="email"
                         name="email"
                         />
                     </div>
-                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                    <div className='relative mb-3'>
                         <FaCamera  className='absolute left-4 top-[30%] text-black '></FaCamera>
                         <input
                         onBlur={handleInputData}
                         placeholder="photoURL"
                         required
                         type="text"
-                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
                         id="photoURL"
                         name="photoURL"
                         />
                     </div>
-                    <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
+                    <div className='relative mb-3'>
                         <FaKey className='absolute left-4 top-[30%] text-black '></FaKey>
                         <input
                         onBlur={handleInputData}
                         placeholder="password"
                         required
-                        type="text"
-                        className="py-1 pt-3 flex-grow px-4 mb-2 transition duration-200 placeholder:text-black font-medium  outline-none ml-6 bg-none"
+                        type="password"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
                         id="password"
                         name="password"
                         />
@@ -97,7 +140,7 @@ const Register = () => {
                       type="submit"
                       className="inline-flex items-center justify-center w-full py-3 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
                     >
-                      Subscribe
+                      Register
                     </button>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">

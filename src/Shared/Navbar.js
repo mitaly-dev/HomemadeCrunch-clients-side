@@ -1,25 +1,50 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaAngleRight, FaArrowRight } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+    const {user,logOut}= useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+  
+    const logOutHandle=()=>{
+      logOut()
+      .then(()=>toast.warning('Lof Out successfull',{autoClose:1500}))
+  }
+
     const menu = <>
              <NavLink to="/home"
                   className={({isActice})=>isActice?`font-medium tracking-wide  text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
                 Home <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
                 
               </NavLink>
-             <NavLink to="/services"
-                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
-                sevice <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-                
-              </NavLink>
-              <NavLink to="/reviews"
+              <NavLink to="/blog"
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
                 blog <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </NavLink>
+              {
+                user?
+                <>
+                 <NavLink to="/reviews"
+                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
+                My Reviews <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
                 
               </NavLink>
+              <NavLink to="/services"
+                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
+                My Services <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </NavLink>
+              <button 
+                  onClick={logOutHandle}
+                  className="font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white">
+                Logout <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </button> 
+                </> 
+                : undefined
+              }
             </>
     return (
         <div className="bg-black">
@@ -38,27 +63,24 @@ const Navbar = () => {
             <ul className="flex items-center hidden space-x-8 lg:flex">
               {menu}
             </ul>
-            <ul className="flex items-center hidden space-x-8 lg:flex">
+            <ul className="flex items-center hidden space-x-8 lg:flex text-white">
+             {
+              user?
+              <div className='flex items-center'>
+                <small>{user?.email}</small>
+                <img src={user?.photoURL} alt="user" className='w-[40px] h-[40px] object-cover rounded-full ml-2'/>
+              </div> :
               <li>
-                <Link
-                  to="/login"
-                  className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                  aria-label="Sign up"
-                  title="Sign up"
-                >
-                  login
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/register"
-                  className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                  aria-label="Sign up"
-                  title="Sign up"
-                >
-                  Register
-                </Link>
-              </li>
+              <Link
+                to="/login"
+                className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                aria-label="Sign up"
+                title="Sign up"
+              >
+                login
+              </Link>
+            </li> 
+             }
             </ul>
             <div className="lg:hidden">
               <button

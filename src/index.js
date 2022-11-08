@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthProvider, { AuthContext } from './Context/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToastContainer position='top-center'/>
-    <App />
+    <AuthProvider>
+      <ToastContainer position='top-center'/>
+        <App />
+    </AuthProvider>
   </React.StrictMode>
 );
 

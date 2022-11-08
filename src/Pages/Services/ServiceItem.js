@@ -1,14 +1,16 @@
 import React from 'react';
 import { FaArrowRight, FaStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ServiceItem = ({serviceItem}) => {
-const {rating,price,service,image,description} = serviceItem
+const {rating,price,service,image,description,_id} = serviceItem
+const navigate = useNavigate()
 
 const ratingArray=[] 
 for(let i=0;i<rating;i++){
     ratingArray.push(<FaStar className='text-yellow text-[15px]'></FaStar>)
 }
+
 
     return (
         <div className="overflow-hidden transition-shadow duration-300 bg-white rounded text-center px-4 mb-5">
@@ -36,7 +38,7 @@ for(let i=0;i<rating;i++){
               {description.length>100?description.slice(0,100)+".....":description}
             </p>
             <h3 className='text-xl font-semibold'>${price}</h3>
-            <button className='bg-yellow py-3 px-7 font-semibold flex rounded-full items-center mt-5 m-auto text-[15px hover:bg-black transition ease-in-out delay-150 duration-500 hover:text-white'>View Details <FaArrowRight className='ml-2 text-[12px]'></FaArrowRight></button>
+            <button onClick={()=>navigate(`/serviceDetails/${_id}`)} className='bg-yellow py-3 px-7 font-semibold flex rounded-full items-center mt-5 m-auto text-[15px hover:bg-black transition ease-in-out delay-150 duration-500 hover:text-white'>View Details <FaArrowRight className='ml-2 text-[12px]'></FaArrowRight></button>
           </div>
         </div>
     );
