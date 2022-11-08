@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Reviews from "../Pages/MyReviews/Reviews";
 import AllService from "../Pages/Services/AllService";
 import Services from "../Pages/Services/Services";
+import Login from "../User/Login";
+import Register from "../User/Register";
 
  const router = createBrowserRouter([
     {path:'/',
@@ -15,7 +17,10 @@ import Services from "../Pages/Services/Services";
         {path:'/reviews',element:<Reviews></Reviews>},
         {path:'/allservices',
         loader:async()=>fetch('http://localhost:5000/services'),
-        element:<AllService></AllService>}
+        element:<AllService></AllService>},
+        {path:'/login',element:<Login></Login>},
+        {path:'/register',element:<Register></Register>}
+
     ]
     }
 ])

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaAngleRight, FaArrowRight } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -25,8 +25,8 @@ const Navbar = () => {
         <div className="bg-black">
         <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between">
-            <a
-              href="/"
+            <Link
+              to="/"
               aria-label="Company"
               title="Company"
               className="inline-flex items-center"
@@ -34,20 +34,30 @@ const Navbar = () => {
               <span className="ml-2 text-xl font-bold tracking-wide text-gray-100">
               Homemade<span className='text-yellow text-2xl'>Crunch</span>
               </span>
-            </a>
+            </Link>
             <ul className="flex items-center hidden space-x-8 lg:flex">
               {menu}
             </ul>
             <ul className="flex items-center hidden space-x-8 lg:flex">
               <li>
-                <a
-                  href="/"
-                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                <Link
+                  to="/login"
+                  className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                   aria-label="Sign up"
                   title="Sign up"
                 >
-                  Sign up
-                </a>
+                  login
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/register"
+                  className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                  aria-label="Sign up"
+                  title="Sign up"
+                >
+                  Register
+                </Link>
               </li>
             </ul>
             <div className="lg:hidden">
@@ -77,8 +87,8 @@ const Navbar = () => {
                   <div className="p-5 bg-white border rounded shadow-sm">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <a
-                          href="/"
+                        <Link
+                          to="/"
                           aria-label="Company"
                           title="Company"
                           className="inline-flex items-center"
@@ -101,7 +111,7 @@ const Navbar = () => {
                           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                             Company
                           </span>
-                        </a>
+                        </Link>
                       </div>
                       <div>
                         <button

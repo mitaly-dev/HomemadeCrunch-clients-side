@@ -11,11 +11,11 @@ for(let i=0;i<rating;i++){
 }
 
     return (
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded text-center px-4">
+        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded text-center px-4 mb-5">
          <Link to="/" >
                 <img
                 src={image}
-                className="h-[300px] w-[300px] m-auto rounded"
+                className="h-[220px] w-[250px] m-auto rounded"
                 alt=""
                 />
             </Link>

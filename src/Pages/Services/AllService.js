@@ -21,9 +21,7 @@ const AllService = () => {
             {
                 services.map(service=><ServiceItem key={service._id} serviceItem={service}></ServiceItem>)
             }
-          
         </div>
-        
        </div>
     );
 };
