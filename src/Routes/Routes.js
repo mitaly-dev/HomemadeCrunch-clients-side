@@ -5,6 +5,7 @@ import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import MyReviews from "../Pages/Reviews/MyReviews";
 import ServiceReviews from "../Pages/Reviews/ServiceReviews";
+import AddService from "../Pages/Services/AddService";
 import AllService from "../Pages/Services/AllService";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
@@ -30,7 +31,8 @@ import PrivateRoute from "./PrivateRoute";
         element:<ServiceDetails></ServiceDetails>
         },
         {path:'/myreviews',element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>},
-        {path:'/blog',element:<PrivateRoute><Blog></Blog></PrivateRoute>}
+        {path:'/blog',element:<PrivateRoute><Blog></Blog></PrivateRoute>},
+        {path:'/addService',element:<PrivateRoute><AddService></AddService></PrivateRoute>}
     ]
     }
 ])

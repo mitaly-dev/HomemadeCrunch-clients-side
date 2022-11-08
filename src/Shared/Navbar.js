@@ -12,7 +12,7 @@ const Navbar = () => {
   
     const logOutHandle=()=>{
       logOut()
-      .then(()=>toast.warning('Lof Out successfull',{autoClose:1500}))
+      .then(()=>toast.warning('Lof Out successfull',{autoClose:1000}))
   }
 
     const menu = <>
@@ -37,7 +37,7 @@ const Navbar = () => {
                 My Reviews <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
                 
               </NavLink>
-              <NavLink to="/services"
+              <NavLink to="/addService"
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
                 Add Services <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>

@@ -1,15 +1,14 @@
 import React from 'react';
 import Lottie from 'lottie-react'
-import eating from '../assets/LottieAnimation/eating.json'
+import food from '../../assets/LottieAnimation/food.json'
 import { FaCamera, FaKey, FaMailBulk, FaUser, FaVoicemail } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
-import { AuthContext } from '../Context/AuthProvider';
-import SocialLogin from './SocialLogin';
+import { AuthContext } from '../../Context/AuthProvider';
 
-const Login = () => {
+const AddService = () => {
     const {
         userSignIn
     } = useContext(AuthContext)
@@ -55,18 +54,42 @@ const Login = () => {
         alt=""
       />
       <div className="relative bg-gray-900 bg-opacity-75">
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="flex flex-col items-center justify-between xl:flex-row">
-            <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
-            {<Lottie animationData={eating} loop={true}></Lottie>}
-            </div>
-            <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-              <div className="bg-yellow rounded shadow-2xl p-7 sm:p-10">
+        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
+          <div className="text-center xl:flex-row">
+            <div className="w-full xl:px-8 xl:w-8/12 m-auto">
+              <div className="bg-yellow rounded shadow-2xl sm:p-10">
+                <div className=" w-4/12 m-auto">
+                    {<Lottie animationData={food} loop={true}></Lottie>}
+                </div>
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                  Login
+                  Add a Service
                 </h3>
                 <form onSubmit={userSignInHandle}>
                   <div className="mb-1 sm:mb-2">
+                    <div className='relative  mb-3'>
+                        <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
+                        <input
+                        onBlur={handleInputData}
+                        placeholder="serviceName"
+                        required
+                        type="email"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
+                        id="serviceName"
+                        name="serviceName"
+                        />
+                    </div>
+                    <div className='relative  mb-3'>
+                        <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
+                        <input
+                        onBlur={handleInputData}
+                        placeholder="email"
+                        required
+                        type="email"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
+                        id="email"
+                        name="email"
+                        />
+                    </div>
                     <div className='relative  mb-3'>
                         <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
                         <input
@@ -99,8 +122,6 @@ const Login = () => {
                     >
                       Login
                     </button>
-                   <h3 className='text-center font-semibold text-xl py-4'>Or</h3>
-                   <SocialLogin></SocialLogin>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
                     Create an account?<Link to="/register" className='font-semibold'>Register</Link>
@@ -115,4 +136,6 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default AddService;
+
+

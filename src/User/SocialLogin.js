@@ -23,7 +23,7 @@ const SocialLogin = () => {
                 <button
                 onBlur={signWithGoogleHandle}
                 className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4   font-semibold  outline-none pl-12 bg-none"
-                >Sign With Google</button>
+                >SignIn With Google</button>
             </div>
     );
 };
