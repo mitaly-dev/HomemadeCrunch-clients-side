@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
+import SocialLogin from './SocialLogin';
 
 const Register = () => {
     const {
@@ -142,6 +143,8 @@ const Register = () => {
                     >
                       Register
                     </button>
+                    <h3 className='text-center font-semibold text-xl py-4'>Or</h3>
+                   <SocialLogin></SocialLogin>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
                     Already have an account ?<Link to="/login" className='font-semibold'>Login</Link>

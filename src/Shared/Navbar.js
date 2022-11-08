@@ -25,6 +25,10 @@ const Navbar = () => {
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
                 blog <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
+              <NavLink to="/allservices"
+                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
+                service <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </NavLink>
               {
                 user?
                 <>
@@ -35,7 +39,7 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/services"
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                My Services <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+                Add Services <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
               <button 
                   onClick={logOutHandle}

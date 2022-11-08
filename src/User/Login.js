@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const {
@@ -34,14 +35,15 @@ const Login = () => {
     // user login
     const userSignInHandle=(event)=>{
         event.preventDefault()
+        const form = event.target
         if(email && password){
             userSignIn(email,password)
             .then(result=>{
-                console.log(result.user)
+                form.reset()
                 toast.success("Login successfull",{autoClose:1000})
                 navigate(from,{replace:true})
             })
-            .catch(error=>console.log(error.message))
+            .catch(error=>toast.error(error.message,{autoClose:1000}))
         }
     }
 
@@ -94,10 +96,12 @@ const Login = () => {
                   <div className="mt-4 mb-2 sm:mb-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center w-full py-3 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
+                      className="inline-flex items-center justify-center w-full py-3 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
                     >
                       Login
                     </button>
+                   <h3 className='text-center font-semibold text-xl py-4'>Or</h3>
+                   <SocialLogin></SocialLogin>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
                     Create an account?<Link to="/register" className='font-semibold'>Register</Link>
