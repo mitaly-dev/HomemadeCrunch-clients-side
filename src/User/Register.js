@@ -3,8 +3,25 @@ import Lottie from 'lottie-react'
 import eating from '../assets/LottieAnimation/eating.json'
 import { FaCamera, FaKey, FaMailBulk, FaUser, FaVoicemail } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Register = () => {
+    const [formData,setFormData] = useState({
+        userName:"",
+        email:"",
+        photoURL:"",
+        password:""
+    })
+    
+    const handleInputData=(event)=>{
+        const name = event.target.name 
+        const value = event.target.value 
+        console.log(name,value)
+        setFormData({...formData,[name]:value})
+    }
+
+
+
     return (
         <div className="relative">
       <img
@@ -28,6 +45,7 @@ const Register = () => {
                     <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
                         <FaUser className='absolute left-4 top-[30%] text-black '></FaUser>
                         <input
+                        onBlur={handleInputData}
                         placeholder="Username"
                         required
                         type="text"
@@ -39,6 +57,7 @@ const Register = () => {
                     <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
                         <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
                         <input
+                        onBlur={handleInputData}
                         placeholder="email"
                         required
                         type="text"
@@ -50,6 +69,7 @@ const Register = () => {
                     <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
                         <FaCamera  className='absolute left-4 top-[30%] text-black '></FaCamera>
                         <input
+                        onBlur={handleInputData}
                         placeholder="photoURL"
                         required
                         type="text"
@@ -61,6 +81,7 @@ const Register = () => {
                     <div className='relative bg-white border border-gray-300 rounded-full shadow-sm mb-3'>
                         <FaKey className='absolute left-4 top-[30%] text-black '></FaKey>
                         <input
+                        onBlur={handleInputData}
                         placeholder="password"
                         required
                         type="text"
