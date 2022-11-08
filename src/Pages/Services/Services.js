@@ -1,9 +1,10 @@
 import React from 'react';
+import ShortService from './ShortService';
 
 const Services = () => {
     return (
         <div>
-            services
+           <ShortService></ShortService>
         </div>
     );
 };

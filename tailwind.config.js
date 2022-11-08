@@ -8,7 +8,10 @@ module.exports = {
       colors: {
         yellow: "#f7b614",
         black:'#282932'
-      }
+      },
+      fontFamily: {
+        heebo: ["Heebo", "sans-serif"],
+      },
     },
   },
   plugins: [],
