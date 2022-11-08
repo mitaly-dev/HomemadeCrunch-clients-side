@@ -6,6 +6,7 @@ import ServiceItem from './ServiceItem';
 
 const AllService = () => {
     const services = useLoaderData().data
+
     useEffect(()=>{
         window.scrollTo(0, 0)
     },[])

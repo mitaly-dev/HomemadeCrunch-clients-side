@@ -1,13 +1,16 @@
 import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
+import MyReviews from "../Pages/Reviews/MyReviews";
 import ServiceReviews from "../Pages/Reviews/ServiceReviews";
 import AllService from "../Pages/Services/AllService";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import Login from "../User/Login";
 import Register from "../User/Register";
+import PrivateRoute from "./PrivateRoute";
 
  const router = createBrowserRouter([
     {path:'/',
@@ -25,8 +28,9 @@ import Register from "../User/Register";
         {path:'/serviceDetails/:id',
         loader:async({params})=>fetch(`http://localhost:5000/services/${params.id}`),
         element:<ServiceDetails></ServiceDetails>
-    }
-
+        },
+        {path:'/myreviews',element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>},
+        {path:'/blog',element:<PrivateRoute><Blog></Blog></PrivateRoute>}
     ]
     }
 ])

@@ -1,16 +1,27 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import Title from '../../Shared/Title';
+import AddReviewModal from '../Reviews/AddReviewModal';
 import ServiceReviews from '../Reviews/ServiceReviews';
 
 const ServiceDetails = () => {
     const services = useLoaderData().data
     const {price,rating,image,service,_id,description} = services
   
+    useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
+
     const ratingArray=[] 
-for(let i=0;i<rating;i++){
-    ratingArray.push(<FaStar className='text-yellow text-[18px]'></FaStar>)
-}
+    for(let i=0;i<rating;i++){
+        ratingArray.push(<FaStar className='text-yellow text-[18px]'></FaStar>)
+    }
+    const content = {
+        head:"Quick pick",
+        title:"Reviews"
+    }
 
     return (
         <div className='px-5 md:px-16 xl:px-28'>
@@ -34,7 +45,14 @@ for(let i=0;i<rating;i++){
                 </div>
             </div>
             {/* review secition */}
-           <ServiceReviews></ServiceReviews>
+            <section>
+                <Title content={content}></Title>
+                <div className='text-center m-auto pb-10'>
+                <label htmlFor="my-modal" className="btn px-16">Add a Review</label>
+                </div>
+                <ServiceReviews servicesId={_id}></ServiceReviews>
+            </section>
+            <AddReviewModal services={services}></AddReviewModal>
         </div>
     );
 };

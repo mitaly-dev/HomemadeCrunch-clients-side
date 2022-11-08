@@ -32,7 +32,7 @@ const Navbar = () => {
               {
                 user?
                 <>
-                 <NavLink to="/reviews"
+                 <NavLink to="/myreviews"
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
                 My Reviews <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
                 

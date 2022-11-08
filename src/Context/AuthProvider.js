@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
     const auth = getAuth(app)
     const [user,setUser] = useState()
     const [loading ,setLoading] = useState(true)
+    const [reviewRefresh,setReviewRefresh] = useState(true)
     const googleProvider = new GoogleAuthProvider()
 
     // sign with google
@@ -59,7 +60,8 @@ const AuthProvider = ({children}) => {
         updateUserProfile,
         logOut,
         userSignIn,
-        signWithGoogle
+        signWithGoogle,
+        reviewRefresh,setReviewRefresh
     }
     return (
         <div>

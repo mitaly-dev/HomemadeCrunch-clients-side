@@ -6,11 +6,10 @@ const ServiceItem = ({serviceItem}) => {
 const {rating,price,service,image,description,_id} = serviceItem
 const navigate = useNavigate()
 
-const ratingArray=[] 
-for(let i=0;i<rating;i++){
-    ratingArray.push(<FaStar className='text-yellow text-[15px]'></FaStar>)
-}
-
+    const ratingArray=[] 
+    for(let i=0;i<rating;i++){
+        ratingArray.push(<FaStar className='text-yellow text-[15px]'></FaStar>)
+    }
 
     return (
         <div className="overflow-hidden transition-shadow duration-300 bg-white rounded text-center px-4 mb-5">

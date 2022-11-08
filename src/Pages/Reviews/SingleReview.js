@@ -1,17 +1,14 @@
 import React from 'react';
-import { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthProvider';
 
 const SingleReview = ({reviewItem}) => {
-    const {user} = useContext(AuthContext)
-    const {email,_id,serviceName,review,rating,name,serviceId,date} = reviewItem
-    console.log(reviewItem)
+    const {email,review,rating,name,date,photoURL} = reviewItem
+  
     return (
         <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100">
         <div className="flex justify-between p-4">
             <div className="flex space-x-4">
                 <div>
-                    <img src={user?.photoURL} alt="reviewer" className="object-cover w-12 h-12 rounded-full bg-gray-500" />
+                    <img src={photoURL} alt="reviewer" className="object-cover w-12 h-12 rounded-full bg-gray-500" />
                 </div>
                 <div>
                     <h4 className="font-bold">{name}</h4>
@@ -26,7 +23,7 @@ const SingleReview = ({reviewItem}) => {
                 <span className=" font-bold">{rating}</span>
             </div>
         </div>
-        <div className="p-4 space-y-2 text-sm text-gray-400">
+        <div className="p-4 space-y-2 text-sm text-white">
            <p>{review}</p>
         </div>
     </div>
