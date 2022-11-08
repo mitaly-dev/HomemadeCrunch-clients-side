@@ -3,19 +3,18 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FaArrowRight, FaServicestack } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import Title from '../../Shared/Title';
 import ServiceItem from './ServiceItem';
 
 const ShortService = () => {
     const [services,setServices] = useState([])
+    const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/services?size=3')
         .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            setServices(data.data)
-        })
+        .then(data=>setServices(data.data))
     },[])
 
     const content = {
@@ -31,7 +30,7 @@ const ShortService = () => {
             }
           
         </div>
-        <button className='bg-yellow py-4 px-10 font-semibold flex rounded-full items-center mt-5 m-auto text-lg'>See All <FaServicestack className='text-[13px] ml-2'></FaServicestack></button>
+        <button onClick={()=>navigate('/allservices')} className='bg-yellow py-4 px-10 font-semibold flex rounded-full items-center mt-5 m-auto text-lg'>See All <FaServicestack className='text-[13px] ml-2'></FaServicestack></button>
        </div>
     );
 };

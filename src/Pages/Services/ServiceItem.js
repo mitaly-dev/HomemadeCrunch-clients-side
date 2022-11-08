@@ -3,7 +3,7 @@ import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const ServiceItem = ({serviceItem}) => {
-const {rating,_id,price,service,image,description} = serviceItem
+const {rating,price,service,image,description} = serviceItem
 
 const ratingArray=[] 
 for(let i=0;i<rating;i++){
