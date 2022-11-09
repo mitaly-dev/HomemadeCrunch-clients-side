@@ -15,7 +15,6 @@ const Register = () => {
         createUser,
         updateUserProfile,
         logOut,
-        loading,
         setLoading
     } = useContext(AuthContext)
     useTitle('Register')
@@ -51,7 +50,6 @@ const Register = () => {
                 updateProfileHandle()
                 toast.success("Register successfull,please log in",{autoClose:1500})
                 logOut()
-                setLoading(false)
                 navigate('/login')
             })
             .catch(error=>{

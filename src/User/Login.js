@@ -15,7 +15,6 @@ import { useEffect } from 'react';
 const Login = () => {
     const {
         userSignIn,
-        loading,
         setLoading
     } = useContext(AuthContext)
     useTitle('Login')
@@ -51,7 +50,7 @@ const Login = () => {
         if(email && password){
             userSignIn(email,password)
             .then(result=>{
-                jwtToken(email,navigation,loading)
+                jwtToken(email,navigation)
                 toast.success("Login successfull",{autoClose:1000})
                 form.reset()
             })

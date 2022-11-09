@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../Hook/useTitle';
 
 

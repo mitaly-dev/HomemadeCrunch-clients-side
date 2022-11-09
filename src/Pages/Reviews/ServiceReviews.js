@@ -29,7 +29,7 @@ const ServiceReviews = ({servicesId}) => {
         reviews.length>0 ?
             <div className='md:grid grid-cols-2 gap-5 pb-10'>
             {
-                reviews.map((review,index)=><SingleReview kay={index} reviewItem={review}></SingleReview>)
+                reviews.map((review,index)=><SingleReview key={index} reviewItem={review}></SingleReview>)
             }
             </div> :
             <div className='bg-yellow py-20 text-center mb-10 rounded-xl'>

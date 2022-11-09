@@ -12,7 +12,7 @@ export const jwtToken=(email,navigation)=>{
     .then((res=>res.json()))
     .then(data=>{
         localStorage.setItem('HomemadeCrunch-Token',data.token)
-        return  navigation()
+        return navigation()
     })
     .catch(error=>toast.error(error.message,{autoClose:1000}))
 }

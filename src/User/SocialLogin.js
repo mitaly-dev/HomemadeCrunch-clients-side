@@ -20,6 +20,7 @@ const SocialLogin = () => {
         .then(result=>{
             jwtToken(result.user.email,navigation)
         })
+        .catch(err=>console.log(err.message))
     }
 
     return (
