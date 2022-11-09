@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaAngleRight, FaArrowRight } from 'react-icons/fa';
+import { FaAngleRight} from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import { toast } from 'react-toastify';
@@ -9,13 +9,10 @@ const Navbar = () => {
     const {user,logOut}= useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     
-  
     const logOutHandle=()=>{
       logOut()
       .then(()=>toast.warning('Lof Out successfull',{autoClose:1000}))
   }
-
- 
 
     const menu = <>
              <li>
@@ -29,7 +26,7 @@ const Navbar = () => {
               <li>
               <NavLink 
                   to="/blog"
-                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
+                  className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
                   blog 
                   <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
@@ -37,7 +34,7 @@ const Navbar = () => {
               <li>
               <NavLink 
                   to="/allservices"
-                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
+                  className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
                   service 
                   <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
@@ -48,7 +45,7 @@ const Navbar = () => {
                 <li>
                   <NavLink 
                     to="/myreviews"
-                    className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
+                    className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
                   My Reviews 
                   <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
                 </NavLink>
@@ -56,7 +53,7 @@ const Navbar = () => {
                 <li>
                   <NavLink 
                         to="/addService"
-                        className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
+                        className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
                         Add Services 
                         <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
                     </NavLink>
@@ -87,17 +84,17 @@ const Navbar = () => {
             <ul className="flex items-center hidden space-x-8 lg:flex capitalize">
               {menu}
             </ul>
-            <ul className="flex items-center hidden space-x-8 lg:flex text-white">
+            <ul className="flex items-center hidden space-x-8 lg:flex ">
              {
               user?
               <div className='flex items-center'>
-                <small>{user?.email}</small>
+                <small className='text-white'>{user?.email}</small>
                 <img src={user?.photoURL} alt="user" className='w-[40px] h-[40px] object-cover rounded-full ml-2'/>
               </div> :
               <li>
               <Link
                 to="/login"
-                className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none text-white hover:bg-[#ffffff36]"
                 aria-label="Sign up"
                 title="Sign up"
               >
@@ -162,7 +159,24 @@ const Navbar = () => {
                     </div>
                     <nav>
                       <ul className="space-y-4 capitalize">
-                      {menu}
+                        {menu}
+                      {
+                          user?
+                          <div className='flex items-center'>
+                            <small className='text-white'>{user?.email}</small>
+                            <img src={user?.photoURL} alt="user" className='w-[40px] h-[40px] object-cover rounded-full ml-2'/>
+                          </div> :
+                          <li>
+                          <Link
+                            to="/login"
+                            className="border border-yellow inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none text-white hover:bg-[#ffffff36]"
+                            aria-label="Sign up"
+                            title="Sign up"
+                          >
+                            login
+                          </Link>
+                        </li> 
+                        }
                       </ul>
                     </nav>
                   </div>

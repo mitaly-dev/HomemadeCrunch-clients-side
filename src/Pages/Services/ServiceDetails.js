@@ -34,7 +34,7 @@ const ServiceDetails = () => {
                     </div>
                     <div className="flex flex-col col-span-12 py-6 divide-y md:col-span-7 lg:p-10 ">
                         <div className="pt-6 pb-4 space-y-2">
-                            <h2 className="text-3xl font-bold">{service}</h2>
+                            <h2 className="text-3xl font-bold capitalize">{service}</h2>
                             <h3 className="text-xl font-bold">${price}</h3>
                             <div className='flex space-x-1 pb-4'>
                                 {

@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
-import { AuthContext } from "../Context/AuthProvider"
+
 
 export const jwtToken=(email,navigation,loading)=>{
     fetch('http://localhost:5000/jwt',{

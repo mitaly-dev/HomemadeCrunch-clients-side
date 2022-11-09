@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { FaKey, FaMailBulk } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -72,46 +71,45 @@ const AddReviewModal = ({services}) => {
             <div className="modal">
             <div className="modal-box text-black">
                 {
-                    user?  
+                 user?  
                     <div>
-                    <h3 className="font-bold text-lg mb-3 text-yellow">Give a Review</h3>
-                    <div>
-                    <form onSubmit={handleReviewData}>
-                      <div className="mb-1 sm:mb-2">
-                        <div className='mb-3'>
-                            <label htmlFor="rating" className='font-semibold mb-2 inline-block'>Add a Rating : </label>
-                            <input
-                            onBlur={handleInputData}
-                            placeholder="Ratings"
-                            required
-                            defaultValue={5}
-                            type="number"
-                            className="py-3 w-full bg-white border border-gray-300 rounded-lg shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium outline-none bg-none"
-                            id="ratings"
-                            name="ratings"
-                            />
-                        </div>
-                        <textarea
-                        onBlur={handleInputData}
-                         name="review" id="review" cols="30" rows="3" 
-                        placeholder='Type Review....'
-                         className="py-3 w-full bg-white border border-gray-300 rounded-lg shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none bg-none"
-                        ></textarea>
-                        <div className='flex justify-end items-center'>
-                            <div className="modal-action">
-                                <label htmlFor="my-modal" className="btn">Cancel</label>
+                        <h3 className="font-bold text-lg mb-3 text-yellow">Give a Review</h3>
+                        <div>
+                            <form onSubmit={handleReviewData}>
+                            <div className="mb-1 sm:mb-2">
+                                <div className='mb-3'>
+                                    <label htmlFor="rating" className='font-semibold mb-2 inline-block'>Add a Rating : </label>
+                                    <input
+                                    onBlur={handleInputData}
+                                    placeholder="Ratings"
+                                    required
+                                    defaultValue={5}
+                                    type="number"
+                                    className="py-3 w-full bg-white border border-gray-300 rounded-lg shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium outline-none bg-none"
+                                    id="ratings"
+                                    name="ratings"
+                                    />
+                                </div>
+                                <textarea
+                                onBlur={handleInputData}
+                                name="review" id="review" cols="30" rows="3" 
+                                placeholder='Type Review....'
+                                className="py-3 w-full bg-white border border-gray-300 rounded-lg shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none bg-none"
+                                ></textarea>
+                                <div className='flex justify-end items-center'>
+                                    <div className="modal-action">
+                                        <label htmlFor="my-modal" className="btn">Cancel</label>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="btn mt-5 ml-2 bg-yellow border-none"
+                                        >
+                                    Submit
+                                    </button>
+                                </div>
                             </div>
-                            <button
-                                type="submit"
-                                className="btn mt-5 ml-2 bg-yellow border-none"
-                                >
-                               Submit
-                            </button>
+                            </form>
                         </div>
-                      </div>
-                    </form>
-                    </div>
-                    
                     </div> : 
                     <div className='text-center'>
                         <h3 className='font-semibold text-2xl pt-5'>Please login to add a review</h3>
@@ -121,7 +119,6 @@ const AddReviewModal = ({services}) => {
                         </div>
                     </div>
                 }
-               
             </div>
             </div>
         </div>

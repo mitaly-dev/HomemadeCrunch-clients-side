@@ -5,8 +5,8 @@ const SingleMyReview = ({reviewItem}) => {
     const {email,review,rating,name,date,photoURL,serviceName,serviceImg} = reviewItem
   
     return (
-        <>
-        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100 mb-5">
+    <>
+    <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100 mb-5">
         <div className="flex justify-between p-4">
             <div className="flex space-x-4">
                 <div>
@@ -35,7 +35,7 @@ const SingleMyReview = ({reviewItem}) => {
                 <p className='text-gray-100 font-semibold'>{review}</p>
            </div>
         </div>
-        </div>
+    </div>
     </>
     );
 };

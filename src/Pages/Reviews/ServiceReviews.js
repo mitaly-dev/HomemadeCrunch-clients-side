@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
-import Title from '../../Shared/Title';
-import AddReviewModal from './AddReviewModal';
 import SingleReview from './SingleReview';
 
 const ServiceReviews = ({servicesId}) => {

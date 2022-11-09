@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaDeaf, FaServicestack } from 'react-icons/fa';
 
 const About = () => {
     return (

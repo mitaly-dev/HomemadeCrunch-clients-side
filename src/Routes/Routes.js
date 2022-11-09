@@ -8,7 +8,6 @@ import ServiceReviews from "../Pages/Reviews/ServiceReviews";
 import AddService from "../Pages/Services/AddService";
 import AllService from "../Pages/Services/AllService";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
-import ShortService from "../Pages/Services/ShortService";
 import Login from "../User/Login";
 import Register from "../User/Register";
 import PrivateRoute from "./PrivateRoute";

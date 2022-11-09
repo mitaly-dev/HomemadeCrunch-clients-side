@@ -8,7 +8,7 @@ import useTitle from '../../Hook/useTitle';
 import SingleMyReview from './SingleMyReview';
 
 const MyReviews = () => {
-    const {user,myReviewRefresh,setMyReviewRefresh,logOut}=useContext(AuthContext)
+    const {user,myReviewRefresh,logOut}=useContext(AuthContext)
     const [status,setStatus] = useState(false)
     const [reviews,setReviews] = useState([])
     

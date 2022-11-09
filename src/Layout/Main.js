@@ -7,11 +7,10 @@ import Navbar from '../Shared/Navbar'
 import LoadingPage from './LoadingPage';
 
 const Main = () => {
-  const {loading,setLoading} = useContext(AuthContext)
+  const {loading} = useContext(AuthContext)
  
     return (
         <div className='font-heebo'>
-          
           {
             loading ? 
              <LoadingPage></LoadingPage> : 
@@ -21,7 +20,6 @@ const Main = () => {
              <Footer></Footer>
              </>
           }
-         
         </div>
     );
 };

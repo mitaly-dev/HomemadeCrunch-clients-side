@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { FaKey, FaMailBulk } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -77,8 +76,8 @@ const UpdateReview = ({reviewItem}) => {
             <div className="modal">
             <div className="modal-box text-black overflow-y-visible">
                 {
-                    user?  
-                    <div>
+                user?  
+                <div>
                     <h3 className="font-bold text-lg mb-3 text-amber-500"> Update your review for "{serviceName}"</h3>
                     <div>
                         <form onSubmit={handleUpdateReview}>
@@ -117,14 +116,14 @@ const UpdateReview = ({reviewItem}) => {
                             </div>
                         </form>
                     </div>
-                    </div> : 
-                    <div className='text-center'>
-                        <h3 className='font-semibold text-2xl pt-5'>Please login to add a review</h3>
-                        <Link to="/login" className='font-semibold text-xl bg-yellow px-10 py-3 rounded-lg mt-5 inline-block'>Login</Link>
-                        <div className="modal-action mt-10">
-                            <label htmlFor={`my-modal-${_id}`} className="btn">Cancel</label>
-                        </div>
+                </div> : 
+                <div className='text-center'>
+                    <h3 className='font-semibold text-2xl pt-5'>Please login to add a review</h3>
+                    <Link to="/login" className='font-semibold text-xl bg-yellow px-10 py-3 rounded-lg mt-5 inline-block'>Login</Link>
+                    <div className="modal-action mt-10">
+                        <label htmlFor={`my-modal-${_id}`} className="btn">Cancel</label>
                     </div>
+                </div>
                 }
             </div>
             </div>

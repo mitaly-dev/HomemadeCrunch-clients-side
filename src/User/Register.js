@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react'
 import eating from '../assets/LottieAnimation/eating.json'
-import { FaCamera, FaKey, FaMailBulk, FaUser, FaVoicemail } from 'react-icons/fa';
+import { FaCamera, FaKey, FaMailBulk, FaUser } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -12,10 +12,10 @@ import useTitle from '../Hook/useTitle';
 
 const Register = () => {
     const {
-        user,
         createUser,
         updateUserProfile,
         logOut,
+        loading,
         setLoading
     } = useContext(AuthContext)
     useTitle('Register')
@@ -54,7 +54,10 @@ const Register = () => {
                 setLoading(false)
                 navigate('/login')
             })
-            .catch(error=>toast.error(error.message,{autoClose:1500}))
+            .catch(error=>{
+              setLoading(false)
+              toast.error(error.message,{autoClose:1500})
+            })
         }
     }
 
@@ -79,11 +82,11 @@ const Register = () => {
       />
       <div className="relative bg-gray-900 bg-opacity-75">
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="flex flex-col items-center justify-between xl:flex-row">
-            <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
+          <div className="flex flex-col-reverse items-center justify-between lg:flex-row">
+            <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 lg:w-7/12">
             {<Lottie animationData={eating} loop={true}></Lottie>}
             </div>
-            <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
+            <div className="w-full max-w-xl xl:px-8 lg:w-5/12">
               <div className="bg-yellow rounded shadow-2xl p-7 sm:p-10">
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Register
@@ -143,7 +146,7 @@ const Register = () => {
                   <div className="mt-4 mb-2 sm:mb-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center w-full py-3 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
+                      className="inline-flex items-center justify-center w-full py-3 px-6 font-medium hover:bg-gray-700 tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
                     >
                       Register
                     </button>
