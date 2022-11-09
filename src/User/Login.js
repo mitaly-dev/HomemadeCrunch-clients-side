@@ -15,7 +15,8 @@ import { useEffect } from 'react';
 const Login = () => {
     const {
         userSignIn,
-        loading
+        loading,
+        setLoading
     } = useContext(AuthContext)
     useTitle('Login')
     let navigate = useNavigate()
@@ -54,7 +55,11 @@ const Login = () => {
                 toast.success("Login successfull",{autoClose:1000})
                 form.reset()
             })
-            .catch(error=>toast.error(error.message,{autoClose:1000}))
+            .catch(error=>{
+              setLoading(false)
+              toast.error(error.message,{autoClose:1000})
+            }
+          )
         }
     }
 

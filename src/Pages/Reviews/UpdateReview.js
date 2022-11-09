@@ -59,9 +59,6 @@ const UpdateReview = ({reviewItem}) => {
                 toast.success('Review added successfull',{autoClose:1000})
                 form.reset()
                }
-               else{
-                toast.error("no review updated",{autoClose:1000})
-               }
             })
             .catch(error=>toast.error(error.message,{autoClose:1000}))
         }
