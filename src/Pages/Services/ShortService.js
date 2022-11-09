@@ -22,9 +22,9 @@ const ShortService = () => {
         title:"Our services food"
     }
     return (
-       <div className='py-6 md:py-16'>
+       <div className='py-6 md:py-16 px-5 md:px-16 xl:px-28'>
         <Title content={content}></Title>
-         <div className='sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-10 px-5 md:px-16 xl:px-28'>
+         <div className='sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-10'>
             {
                 services.map(service=><ServiceItem key={service._id} serviceItem={service}></ServiceItem>)
             }

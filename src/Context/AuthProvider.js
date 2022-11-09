@@ -12,6 +12,7 @@ const AuthProvider = ({children}) => {
     const [user,setUser] = useState()
     const [loading ,setLoading] = useState(true)
     const [reviewRefresh,setReviewRefresh] = useState(true)
+    const [myReviewRefresh,setMyReviewRefresh] = useState(true)
     const googleProvider = new GoogleAuthProvider()
 
     // sign with google
@@ -34,6 +35,7 @@ const AuthProvider = ({children}) => {
     // logout
     const logOut=()=>{
         setLoading(true)
+        localStorage.removeItem('HomemadeCrunch-Token')
         return signOut(auth)
     }
 
@@ -61,7 +63,9 @@ const AuthProvider = ({children}) => {
         logOut,
         userSignIn,
         signWithGoogle,
-        reviewRefresh,setReviewRefresh
+        reviewRefresh,setReviewRefresh,
+        myReviewRefresh,setMyReviewRefresh,
+        loading,setLoading,
     }
     return (
         <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react'
 import food from '../../assets/LottieAnimation/food.json'
-import { FaCamera, FaKey, FaMailBulk, FaUser, FaVoicemail } from 'react-icons/fa';
+import { FaCamera, FaKey, FaMailBulk, FaPalette, FaServicestack, FaUser, FaVoicemail } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -17,10 +17,13 @@ const AddService = () => {
     let from = location.state?.from?.pathname || "/";
   
     const [formData,setFormData] = useState({
-        email:"",
-        password:""
+     service:"",
+     price:0,
+     rating:0,
+     description:"",
+     image:""
     })
-    const {email,password} = formData
+    const {service,price,rating,description,image} = formData
     
     // get input value
     const handleInputData=(event)=>{
@@ -31,20 +34,34 @@ const AddService = () => {
   
 
     // user login
-    const userSignInHandle=(event)=>{
+    const serviceAddHandle=(event)=>{
         event.preventDefault()
         const form = event.target
-        if(email && password){
-            userSignIn(email,password)
-            .then(result=>{
-                form.reset()
-                toast.success("Login successfull",{autoClose:1000})
-                navigate(from,{replace:true});
+        const services = {
+            service,
+            price,
+            rating,
+            description,
+            image
+        }
+        
+        if(service && price && rating && description && image){
+            fetch('http://localhost:5000/services',{
+                method:'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(services)
             })
-            .catch(error=>toast.error(error.message,{autoClose:1000}))
+            .then(res=>res.json())
+            .then(data=>{
+                form.reset()
+                toast.success('Service added successfull',{autoClose:1000})
+            })
+        }else{
+            toast.error('Please provide us all valid information',{autoClose:1000})
         }
     }
-
 
     return (
         <div className="relative">
@@ -64,68 +81,71 @@ const AddService = () => {
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Add a Service
                 </h3>
-                <form onSubmit={userSignInHandle}>
+                <form onSubmit={serviceAddHandle}>
                   <div className="mb-1 sm:mb-2">
                     <div className='relative  mb-3'>
-                        <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
+                        <img src="https://i.ibb.co/k4CCmVP/3377055-bowl-food-noodle-ramen-icon-1.png" alt=""  className='absolute left-[-5px] top-0 text-black' />
                         <input
                         onBlur={handleInputData}
-                        placeholder="serviceName"
+                        placeholder="Service name"
                         required
-                        type="email"
+                        type="text"
                         className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
-                        id="serviceName"
-                        name="serviceName"
+                        id="service"
+                        name="service"
                         />
                     </div>
                     <div className='relative  mb-3'>
-                        <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
+                        <img src="https://i.ibb.co/k4CCmVP/3377055-bowl-food-noodle-ramen-icon-1.png" alt=""  className='absolute left-[-5px] top-0 text-black' />
                         <input
                         onBlur={handleInputData}
-                        placeholder="email"
+                        placeholder="Service URL"
                         required
-                        type="email"
+                        type="text"
                         className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
-                        id="email"
-                        name="email"
-                        />
-                    </div>
-                    <div className='relative  mb-3'>
-                        <FaMailBulk  className='absolute left-4 top-[30%] text-black '></FaMailBulk>
-                        <input
-                        onBlur={handleInputData}
-                        placeholder="email"
-                        required
-                        type="email"
-                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
-                        id="email"
-                        name="email"
+                        id="image"
+                        name="image"
                         />
                     </div>
                     <div className='relative mb-3'>
-                        <FaKey className='absolute left-4 top-[30%] text-black '></FaKey>
+                        <img src="https://i.ibb.co/k4CCmVP/3377055-bowl-food-noodle-ramen-icon-1.png" alt=""  className='absolute left-[-5px] top-0 text-black' />
                         <input
                         onBlur={handleInputData}
-                        placeholder="password"
+                        placeholder="Price"
                         required
-                        type="password"
+                        type="number"
                         className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
-                        id="password"
-                        name="password"
+                        id="price"
+                        name="price"
                         />
                     </div>
+                    <div className='relative  mb-3'>
+                       <img src="https://i.ibb.co/k4CCmVP/3377055-bowl-food-noodle-ramen-icon-1.png" alt=""  className='absolute left-[-5px] top-0 text-black' />
+                        <input
+                        onBlur={handleInputData}
+                        placeholder="Rating"
+                        required
+                        type="number"
+                        className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"
+                        id="rating"
+                        name="rating"
+                        />
+                    </div>
+                    <textarea
+                       onBlur={handleInputData}
+                         name="description" id="description" cols="30" rows="3" 
+                        placeholder='Description...'
+                         className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-10  transition duration-200 placeholder:text-black font-medium  outline-none bg-none"
+                        ></textarea>
                   </div>
                   <div className="mt-4 mb-2 sm:mb-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center w-full py-3 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
+                      className="inline-flex items-center justify-center w-full py-4 px-6 font-semibold tracking-wide text-white transition duration-200 rounded-full shadow-md outline-none bg-black"
                     >
-                      Login
+                      Add Service
                     </button>
                   </div>
-                  <p className="text-xs text-gray-600 sm:text-sm">
-                    Create an account?<Link to="/register" className='font-semibold'>Register</Link>
-                  </p>
                 </form>
               </div>
             </div>

@@ -8,10 +8,12 @@ import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import SocialLogin from './SocialLogin';
+import { jwtToken } from '../JWTToken/JWTToken';
 
 const Login = () => {
     const {
-        userSignIn
+        userSignIn,
+        loading
     } = useContext(AuthContext)
     let navigate = useNavigate()
     let location = useLocation()
@@ -30,6 +32,9 @@ const Login = () => {
         setFormData({...formData,[name]:value})
     }
   
+    const navigation =()=>{
+        navigate(from,{replace:true});
+    }
 
     // user login
     const userSignInHandle=(event)=>{
@@ -38,17 +43,16 @@ const Login = () => {
         if(email && password){
             userSignIn(email,password)
             .then(result=>{
-                form.reset()
+                jwtToken(email,navigation,loading)
                 toast.success("Login successfull",{autoClose:1000})
-                navigate(from,{replace:true});
+                form.reset()
             })
             .catch(error=>toast.error(error.message,{autoClose:1000}))
         }
     }
 
-
     return (
-        <div className="relative">
+      <div className="relative">
       <img
         src="https://images.unsplash.com/photo-1592861956120-e524fc739696?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZWF0aW5nfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
         className="absolute inset-0 object-cover w-full h-full"
@@ -103,7 +107,7 @@ const Login = () => {
                    <SocialLogin></SocialLogin>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
-                    Create an account?<Link to="/register" className='font-semibold'>Register</Link>
+                    Create an account? <Link to="/register" className='font-semibold'> Register Now</Link>
                   </p>
                 </form>
               </div>

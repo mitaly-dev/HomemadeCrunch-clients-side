@@ -1,17 +1,26 @@
 import React from 'react';
 import { useContext } from 'react';
+import { useLocation , useNavigate } from 'react-router-dom';
 import googleImg from '../assets/images/google.png'
 import { AuthContext } from '../Context/AuthProvider';
+import { jwtToken } from '../JWTToken/JWTToken';
 
 
 
 const SocialLogin = () => {
     const {signWithGoogle} = useContext(AuthContext)
+    let navigate = useNavigate()
+    let location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+
+    const navigation =()=>{
+        navigate(from,{replace:true});
+    }
 
     const signWithGoogleHandle=()=>{
         signWithGoogle()
         .then(result=>{
-            console.log(result.user)
+            jwtToken(result.email,navigation)
         })
     }
 

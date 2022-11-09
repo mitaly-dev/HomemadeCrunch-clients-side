@@ -9,7 +9,7 @@ import DateObject from "react-date-object";
 
 const AddReviewModal = ({services}) => {
     const {user,reviewRefresh,setReviewRefresh} = useContext(AuthContext)
-    const {service,_id} = services
+    const {service,_id,image} = services
 
     const date = new DateObject();
     const [reviewData,setReviewData] = useState(
@@ -39,7 +39,8 @@ const AddReviewModal = ({services}) => {
             name:user.displayName,
             email:user.email,
             photoURL:user.photoURL,
-            date:date.format("YYYY/MM/DD hh:mm a")
+            date:date.format("YYYY/MM/DD hh:mm a"),
+            serviceImg:image
         }
        
         if(ratings && review){

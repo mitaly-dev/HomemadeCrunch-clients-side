@@ -31,7 +31,7 @@ import PrivateRoute from "./PrivateRoute";
         element:<ServiceDetails></ServiceDetails>
         },
         {path:'/myreviews',element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>},
-        {path:'/blog',element:<PrivateRoute><Blog></Blog></PrivateRoute>},
+        {path:'/blog',element:<Blog></Blog>},
         {path:'/addService',element:<PrivateRoute><AddService></AddService></PrivateRoute>}
     ]
     }

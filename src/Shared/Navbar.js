@@ -15,32 +15,52 @@ const Navbar = () => {
       .then(()=>toast.warning('Lof Out successfull',{autoClose:1000}))
   }
 
+ 
+
     const menu = <>
-             <NavLink to="/home"
-                  className={({isActice})=>isActice?`font-medium tracking-wide  text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
-                Home <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-                
+             <li>
+             <NavLink 
+                  to="/home"
+                  className={({ isActice })=>isActice ? `font-medium tracking-wide  text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400` : `font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
+                  Home 
+                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
-              <NavLink to="/blog"
+             </li>
+              <li>
+              <NavLink 
+                  to="/blog"
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                blog <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+                  blog 
+                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
-              <NavLink to="/allservices"
+              </li>
+              <li>
+              <NavLink 
+                  to="/allservices"
                   className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                service <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+                  service 
+                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </NavLink>
+              </li>
               {
                 user?
                 <>
-                 <NavLink to="/myreviews"
-                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
-                My Reviews <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-                
-              </NavLink>
-              <NavLink to="/addService"
-                  className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                Add Services <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-              </NavLink>
+                <li>
+                  <NavLink 
+                    to="/myreviews"
+                    className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
+                  My Reviews 
+                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+                </NavLink>
+                </li>
+                <li>
+                  <NavLink 
+                        to="/addService"
+                        className={({isActice})=>isActice?`font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
+                        Add Services 
+                        <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+                    </NavLink>
+                </li>
               <button 
                   onClick={logOutHandle}
                   className="font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white">
@@ -119,23 +139,8 @@ const Navbar = () => {
                           title="Company"
                           className="inline-flex items-center"
                         >
-                          <svg
-                            className="w-8 text-deep-purple-accent-400"
-                            viewBox="0 0 24 24"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeMiterlimit="10"
-                            stroke="currentColor"
-                            fill="none"
-                          >
-                            <rect x="3" y="1" width="7" height="12" />
-                            <rect x="3" y="17" width="7" height="6" />
-                            <rect x="14" y="1" width="7" height="6" />
-                            <rect x="14" y="11" width="7" height="12" />
-                          </svg>
-                          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                            Company
+                          <span className="ml-2 text-xl font-bold tracking-wide text-gray-100">
+                          Homemade<span className='text-yellow text-2xl'>Crunch</span>
                           </span>
                         </Link>
                       </div>

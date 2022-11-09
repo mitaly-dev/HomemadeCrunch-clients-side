@@ -1,11 +1,38 @@
 import React from 'react';
+import { useContext } from 'react';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthProvider';
+import UpdateReview from './UpdateReview';
 
 const SingleMyReview = ({reviewItem}) => {
-
-    const {email,review,rating,name,date,photoURL,serviceName,serviceImg} = reviewItem
+    const {myReviewRefresh,setMyReviewRefresh,logOut} = useContext(AuthContext)
+    const {email,review,rating,name,date,photoURL,serviceName,serviceImg,_id} = reviewItem
   
+
+    const deleteReview=()=>{
+        fetch(`http://localhost:5000/myreviews/${_id}`,{
+            method:'DELETE',
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('HomemadeCrunch-Token')}`
+            }
+        })
+        .then(res=>{
+            if(res.status===401 || res.status===403){
+                toast.error('Unauthoroized user',{autoClose:1000})
+                logOut()
+            }
+            return res.json()
+        })
+        .then(data=>{
+           if(data.deletedCount){
+            setMyReviewRefresh(!myReviewRefresh)
+            toast.success('Delete review succesfully',{autoClose:1000})
+           }
+        })
+        .catch(error=>console.log(error.message))
+    }
+
     return (
-        <>
         <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100">
         <div className="flex justify-between p-4">
             <div className="flex space-x-4">
@@ -32,11 +59,15 @@ const SingleMyReview = ({reviewItem}) => {
            <div className='col-span-2'>
                 <h3 className='text-semibold text-xl mb-2 text-yellow capitalize'>{serviceName}</h3>
                 <span>Review  :</span>
-                <p className='text-gray-100 font-semibold'>{review}</p>
+                <p>{review}</p>
            </div>
         </div>
+        <div className="p-4 space-y-2 text-sm text-white flex justify-between items-center">
+            <label htmlFor={`my-modal-${_id}`} className="cursor-pointer hover:text-yellow">Edit Review</label>
+           <button onClick={deleteReview} className="hover:text-yellow">Delete Review</button>
         </div>
-    </>
+       <UpdateReview reviewItem={reviewItem}></UpdateReview>
+    </div>
     );
 };
 

@@ -147,7 +147,7 @@ const Register = () => {
                    <SocialLogin></SocialLogin>
                   </div>
                   <p className="text-xs text-gray-600 sm:text-sm">
-                    Already have an account ?<Link to="/login" className='font-semibold'>Login</Link>
+                    Already have an account ? <Link to="/login" className='font-semibold'> Login</Link>
                   </p>
                 </form>
               </div>
