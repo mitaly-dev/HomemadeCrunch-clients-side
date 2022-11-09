@@ -115,13 +115,15 @@ const Login = () => {
                     >
                       Login
                     </button>
-                   <h3 className='text-center font-semibold text-xl py-4'>Or</h3>
-                   <SocialLogin></SocialLogin>
                   </div>
-                  <p className="text-xs text-gray-600 sm:text-sm">
+                </form>
+                <div>
+                <h3 className='text-center font-semibold text-xl py-2'>Or</h3>
+                   <SocialLogin></SocialLogin>
+                  <p className="text-xs text-gray-600 sm:text-sm mt-5">
                     Create an account? <Link to="/register" className='font-semibold'> Register Now</Link>
                   </p>
-                </form>
+                </div>
               </div>
             </div>
           </div>

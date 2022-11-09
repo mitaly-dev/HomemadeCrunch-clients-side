@@ -15,49 +15,64 @@ const Navbar = () => {
   }
 
     const menu = <>
-             <li>
-             <NavLink 
+              <li className='flex items-center'>
+                <NavLink
                   to="/home"
-                  className={({ isActice })=>isActice ? `font-medium tracking-wide  text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400` : `font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
-                  Home 
-                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-              </NavLink>
-             </li>
-              <li>
-              <NavLink 
-                  to="/blog"
-                  className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                  blog 
-                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-              </NavLink>
+                  aria-label="home"
+                  title="home"
+                  className={({isActive})=>isActive?"font-medium text-yellow transition-colors duration-100" : "font-medium transition-colors duration-100 text-white"}
+                >
+                  Home
+                </NavLink>
+                <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </li>
-              <li>
-              <NavLink 
+              <li className='flex items-center'>
+                <NavLink
+                  to="/blog"
+                  aria-label="blog"
+                  title="blog"
+                  className={({isActive})=>isActive?"font-medium text-yellow transition-colors duration-100" : "font-medium transition-colors duration-100 text-white"}
+                >
+                  Blog
+                </NavLink>
+                <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </li>
+              <li className='flex items-center'>
+                <NavLink
                   to="/allservices"
-                  className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                  service 
-                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-              </NavLink>
+                  aria-label="allservice"
+                  title="allservice"
+                  className={({isActive})=>isActive?"font-medium text-yellow transition-colors duration-100" : "font-medium transition-colors duration-100 text-white"}
+                >
+                  Service
+                </NavLink>
+                <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
               </li>
               {
                 user?
                 <>
-                <li>
-                  <NavLink 
-                    to="/myreviews"
-                    className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide text-white flex items-center transition-colors duration-200 hover:text-teal-accent-400`}>
-                  My Reviews 
-                  <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              <li className='flex items-center'>
+                <NavLink
+                  to="/myreviews"
+                  aria-label="myreview"
+                  title="myreview"
+                  className={({isActive})=>isActive?"font-medium text-yellow transition-colors duration-100" : "font-medium transition-colors duration-100 text-white"}
+                >
+                  My Reviews
                 </NavLink>
-                </li>
-                <li>
-                  <NavLink 
-                        to="/addService"
-                        className={({isActice})=>isActice ? `font-medium tracking-wide text-yellow flex items-center transition-colors duration-200 hover:text-teal-accent-400`:`font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white`}>
-                        Add Services 
-                        <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
-                    </NavLink>
-                </li>
+                <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </li>
+              <li className='flex items-center'>
+                <NavLink
+                  to="/addService"
+                  aria-label="addService"
+                  title="addService"
+                  className={({isActive})=>isActive?"font-medium text-yellow transition-colors duration-100" : "font-medium transition-colors duration-100 text-white"}
+                >
+                   Add Services
+                </NavLink>
+                <FaAngleRight className='text-yellow ml-1 text-xs'></FaAngleRight>
+              </li>
               <button 
                   onClick={logOutHandle}
                   className="font-medium tracking-wide  flex items-center transition-colors duration-200 hover:text-teal-accent-400 text-white">
@@ -81,7 +96,7 @@ const Navbar = () => {
               Homemade<span className='text-yellow text-2xl'>Crunch</span>
               </span>
             </Link>
-            <ul className="flex items-center hidden space-x-8 lg:flex capitalize">
+            <ul className="flex items-center hidden space-x-7 lg:flex capitalize">
               {menu}
             </ul>
             <ul className="flex items-center hidden space-x-8 lg:flex ">

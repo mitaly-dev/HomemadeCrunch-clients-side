@@ -5,8 +5,6 @@ import googleImg from '../assets/images/google.png'
 import { AuthContext } from '../Context/AuthProvider';
 import { jwtToken } from '../JWTToken/JWTToken';
 
-
-
 const SocialLogin = () => {
     const {signWithGoogle} = useContext(AuthContext)
     let navigate = useNavigate()
@@ -20,7 +18,7 @@ const SocialLogin = () => {
     const signWithGoogleHandle=()=>{
         signWithGoogle()
         .then(result=>{
-            jwtToken(result.email,navigation)
+            jwtToken(result.user.email,navigation)
         })
     }
 
@@ -30,7 +28,7 @@ const SocialLogin = () => {
                     <img src={googleImg} alt="" className='w-[30px]' />
                 </div>
                 <button
-                onBlur={signWithGoogleHandle}
+                onClick={signWithGoogleHandle}
                 className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4   font-semibold  outline-none pl-12 bg-none"
                 >SignIn With Google</button>
             </div>

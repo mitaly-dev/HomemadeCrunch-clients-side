@@ -7,7 +7,7 @@ const Banner = () => {
     return (
         <div className="relative">
         <img
-          src={bannerBack}
+          src="https://w0.peakpx.com/wallpaper/632/398/HD-wallpaper-earth-communication-internet-concepts-networking-concepts-social-network-technology.jpg"
           className="absolute inset-0 object-cover w-full h-full"
           alt=""
         />

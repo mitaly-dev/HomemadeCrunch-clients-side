@@ -45,7 +45,7 @@ const MyReviews = () => {
             reviews.length>0 ?
                 <div className='md:grid grid-cols-2 gap-10 '>
                     {
-                        reviews.map((review,index)=><SingleMyReview kay={index} reviewItem={review}></SingleMyReview>)
+                        reviews.map((review,index)=><SingleMyReview key={index} reviewItem={review}></SingleMyReview>)
                     }
                 </div> :
                 <div className='bg-yellow py-20 px-5 md:px-16 xl:px-28 text-center rounded-xl'>

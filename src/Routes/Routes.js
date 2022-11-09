@@ -28,9 +28,7 @@ import PrivateRoute from "./PrivateRoute";
         element:<ServiceDetails></ServiceDetails>
         },
         {path:'/myreviews',element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>},
-        {path:'/blog',
-        loader:async()=>fetch("https://homemade-crunch-server.vercel.app/blog"),
-        element:<Blog></Blog>},
+        {path:'/blog',element:<Blog></Blog>},
         {path:'/addService',element:<PrivateRoute><AddService></AddService></PrivateRoute>}
     ]
     }
