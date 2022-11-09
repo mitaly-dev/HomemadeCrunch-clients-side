@@ -3,8 +3,8 @@
 ## Live Website : https://homemadecrunch-494be.web.app/
 
 ## About Website :
-- Here is the registration form to create user
-- There is a form for user to login to the website
+- Registration form for create user
+- User can login to this website
 - Users can create reviews for any service on this website
 - All the reviews for a service can be seen on the service details page
 - He can only see his reviews on a different router if he is logged in
@@ -23,6 +23,6 @@
 - lottie-react
 - react-icons
 - react-photo-view
-- express js
+- Express js
 - Mongodb
 - Environment variable
