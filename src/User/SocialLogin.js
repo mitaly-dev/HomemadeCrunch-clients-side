@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useLocation , useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import googleImg from '../assets/images/google.png'
 import { AuthContext } from '../Context/AuthProvider';
 import { jwtToken } from '../JWTToken/JWTToken';
@@ -18,6 +19,7 @@ const SocialLogin = () => {
     const signWithGoogleHandle=()=>{
         signWithGoogle()
         .then(result=>{
+            toast.success("Login successfull",{autoClose:1000})
             jwtToken(result.user.email,navigation)
         })
         .catch(err=>console.log(err.message))

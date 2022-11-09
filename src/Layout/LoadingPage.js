@@ -8,7 +8,6 @@ const LoadingPage = () => {
     let location = useLocation()
     let from = location.state?.from?.pathname
     
-
     useEffect(()=>{
         if(from){
            navigate(from,{ replace : true })
