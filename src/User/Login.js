@@ -9,16 +9,18 @@ import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import SocialLogin from './SocialLogin';
 import { jwtToken } from '../JWTToken/JWTToken';
+import useTitle from '../Hook/useTitle';
 
 const Login = () => {
     const {
         userSignIn,
         loading
     } = useContext(AuthContext)
+    useTitle('Login')
     let navigate = useNavigate()
     let location = useLocation()
     let from = location.state?.from?.pathname || "/";
-  
+   
     const [formData,setFormData] = useState({
         email:"",
         password:""

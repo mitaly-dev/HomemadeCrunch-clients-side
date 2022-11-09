@@ -14,12 +14,12 @@ const navigate = useNavigate()
     }
 
     return (
-        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded text-center px-4 mb-5">
+        <div className="overflow-hidden transition-shadow duration-300 bg-white rounded text-center px-4 mb-7">
             <PhotoProvider>
                 <PhotoView src={image} className="h-[500px] w-[500px]">
                           <img
                           src={image}
-                          className="h-[220px] w-[250px] m-auto rounded"
+                          className="h-[220px] w-[250px] m-auto rounded cursor-pointer"
                           alt=""
                           />
                 </PhotoView>

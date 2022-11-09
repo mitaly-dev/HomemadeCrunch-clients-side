@@ -16,24 +16,25 @@ const ServiceReviews = ({servicesId}) => {
         fetch(`http://localhost:5000/reviews?serviceId=${servicesId}`)
         .then(res=>res.json())
         .then(data=>{
-            setReviews(data.data)
+            let result = data.data
+            setReviews(result.reverse())
             setStatus(data.status)
         })
     },[reviewRefresh])
   
     return (
-        <div className='px-28 py-16'>
+        <div className='py-3 md:py-7 lg:py-12'>
         {
         status?
         <div>
         {
         reviews.length>0 ?
-            <div className='grid grid-cols-2 gap-5 pb-16'>
+            <div className='md:grid grid-cols-2 gap-5 pb-10'>
             {
-                reviews.map(review=><SingleReview kay={review._id} reviewItem={review}></SingleReview>)
+                reviews.map((review,index)=><SingleReview kay={index} reviewItem={review}></SingleReview>)
             }
             </div> :
-            <div className='bg-yellow py-10 text-center mb-10 rounded-xl'>
+            <div className='bg-yellow py-20 text-center mb-10 rounded-xl'>
                 <h3 className='font-semibold text-2xl capitalize'>No reviews found</h3>
             </div>
         }

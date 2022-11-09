@@ -8,14 +8,17 @@ import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import SocialLogin from './SocialLogin';
+import useTitle from '../Hook/useTitle';
 
 const Register = () => {
     const {
         user,
         createUser,
         updateUserProfile,
-        logOut
+        logOut,
+        setLoading
     } = useContext(AuthContext)
+    useTitle('Register')
     const navigate = useNavigate()
   
     const [formData,setFormData] = useState({
@@ -46,8 +49,9 @@ const Register = () => {
             createUser(email,password)
             .then(result=>{
                 updateProfileHandle()
-                toast.success("Register successfull,please log in",{autoClose:1000})
+                toast.success("Register successfull,please log in",{autoClose:1500})
                 logOut()
+                setLoading(false)
                 navigate('/login')
             })
             .catch(error=>toast.error(error.message,{autoClose:1500}))

@@ -8,7 +8,7 @@ import ServiceReviews from "../Pages/Reviews/ServiceReviews";
 import AddService from "../Pages/Services/AddService";
 import AllService from "../Pages/Services/AllService";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
-import Services from "../Pages/Services/Services";
+import ShortService from "../Pages/Services/ShortService";
 import Login from "../User/Login";
 import Register from "../User/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -19,10 +19,8 @@ import PrivateRoute from "./PrivateRoute";
     children:[
         {path:'/',element:<Home></Home>},
         {path:'/home',element:<Home></Home>},
-        {path:'/services',element:<Services></Services>},
         {path:'/reviews',element:<ServiceReviews></ServiceReviews>},
         {path:'/allservices',
-        loader:async()=>fetch('http://localhost:5000/services'),
         element:<AllService></AllService>},
         {path:'/login',element:<Login></Login>},
         {path:'/register',element:<Register></Register>},
@@ -31,7 +29,9 @@ import PrivateRoute from "./PrivateRoute";
         element:<ServiceDetails></ServiceDetails>
         },
         {path:'/myreviews',element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>},
-        {path:'/blog',element:<Blog></Blog>},
+        {path:'/blog',
+        loader:async()=>fetch("http://localhost:5000/blog"),
+        element:<Blog></Blog>},
         {path:'/addService',element:<PrivateRoute><AddService></AddService></PrivateRoute>}
     ]
     }

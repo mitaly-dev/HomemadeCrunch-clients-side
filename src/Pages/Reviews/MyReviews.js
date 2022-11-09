@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hook/useTitle';
 import SingleMyReview from './SingleMyReview';
 
 const MyReviews = () => {
@@ -11,6 +12,8 @@ const MyReviews = () => {
     const [status,setStatus] = useState(false)
     const [reviews,setReviews] = useState([])
     
+    useTitle('MyReview')
+
     useEffect(()=>{
         window.scrollTo(0,0)
         fetch(`http://localhost:5000/myreviews?email=${user?.email}`,{
@@ -27,31 +30,34 @@ const MyReviews = () => {
         })
         .then(data=>{
            setStatus(data.status)
-           setReviews(data.data)
+            let result = data.data
+           setReviews(result.reverse())
         }
         )
     },[myReviewRefresh])
    
     return (
-        <div className='px-28 py-16'>
+        <>
             {
             status?
-            <div>
+            <div className='py-6 md:py-16 px-5 md:px-16 xl:px-28'>
             {
             reviews.length>0 ?
-                <div className='grid grid-cols-2 gap-10 '>
+                <div className='md:grid grid-cols-2 gap-10 '>
                     {
-                        reviews.map(review=><SingleMyReview kay={review._id} reviewItem={review}></SingleMyReview>)
+                        reviews.map((review,index)=><SingleMyReview kay={index} reviewItem={review}></SingleMyReview>)
                     }
                 </div> :
-                <div className='bg-yellow py-10 text-center rounded-xl'>
+                <div className='bg-yellow py-20 px-5 md:px-16 xl:px-28 text-center rounded-xl'>
                     <h3 className='font-semibold text-2xl capitalize'>No reviews were added</h3>
                 </div>
             }
             </div> :
-            <div className="w-16 h-16 m-auto border-4 border-dashed rounded-full animate-spin border-black"></div>
+            <div className='min-h-[90vh] flex justify-center items-center'>
+                <div className="w-20 h-20 m-auto border-8 border-dashed rounded-full animate-spin border-orange-500"></div>
+            </div>
             }
-        </div>
+        </>
     );
 };
 

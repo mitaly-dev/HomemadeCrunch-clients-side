@@ -70,7 +70,7 @@ const AddReviewModal = ({services}) => {
         <div>
             <input type="checkbox" id="my-modal" className="modal-toggle" />
             <div className="modal">
-            <div className="modal-box text-black overflow-y-visible">
+            <div className="modal-box text-black">
                 {
                     user?  
                     <div>

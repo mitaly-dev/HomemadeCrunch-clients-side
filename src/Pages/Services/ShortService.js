@@ -28,7 +28,6 @@ const ShortService = () => {
             {
                 services.map(service=><ServiceItem key={service._id} serviceItem={service}></ServiceItem>)
             }
-          
         </div>
         <button onClick={()=>navigate('/allservices')} className='bg-yellow py-4 px-10 font-semibold flex rounded-full items-center mt-5 m-auto text-lg'>See All <FaServicestack className='text-[13px] ml-2'></FaServicestack></button>
        </div>

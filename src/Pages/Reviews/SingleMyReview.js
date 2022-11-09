@@ -10,7 +10,9 @@ const SingleMyReview = ({reviewItem}) => {
   
 
     const deleteReview=()=>{
-        fetch(`http://localhost:5000/myreviews/${_id}`,{
+        const sure = window.confirm('Are you sure , you want to delete this review ?')
+        if(sure){
+            fetch(`http://localhost:5000/myreviews/${_id}`,{
             method:'DELETE',
             headers:{
                 authorization:`Bearer ${localStorage.getItem('HomemadeCrunch-Token')}`
@@ -30,10 +32,12 @@ const SingleMyReview = ({reviewItem}) => {
            }
         })
         .catch(error=>console.log(error.message))
+
+        }
     }
 
     return (
-        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100">
+        <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100 mb-5">
         <div className="flex justify-between p-4">
             <div className="flex space-x-4">
                 <div>
@@ -52,7 +56,7 @@ const SingleMyReview = ({reviewItem}) => {
                 <span className=" font-bold">{rating}</span>
             </div>
         </div>
-        <div className="px-4 py-7 space-y-2 text-sm text-white grid grid-cols-3 gap-5">
+        <div className="px-4 py-7 space-y-2 text-sm text-white lg:grid grid-cols-3 gap-5">
            <div className='col-span-1'>
                 <img src={serviceImg} alt="service img" className='rounded-xl h-[130px] object-cover' />
            </div>

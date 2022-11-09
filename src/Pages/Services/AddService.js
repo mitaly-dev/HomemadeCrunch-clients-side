@@ -1,21 +1,12 @@
 import React from 'react';
 import Lottie from 'lottie-react'
 import food from '../../assets/LottieAnimation/food.json'
-import { FaCamera, FaKey, FaMailBulk, FaPalette, FaServicestack, FaUser, FaVoicemail } from 'react-icons/fa';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hook/useTitle';
 
 const AddService = () => {
-    const {
-        userSignIn
-    } = useContext(AuthContext)
-    let navigate = useNavigate()
-    let location = useLocation()
-    let from = location.state?.from?.pathname || "/";
-  
+    useTitle('AddService')
     const [formData,setFormData] = useState({
      service:"",
      price:0,
@@ -70,11 +61,11 @@ const AddService = () => {
         className="absolute inset-0 object-cover w-full h-full"
         alt=""
       />
-      <div className="relative bg-gray-900 bg-opacity-75">
+      <div className="relative bg-gray-900 bg-opacity-75 min-h-screen">
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
           <div className="text-center xl:flex-row">
-            <div className="w-full xl:px-8 xl:w-8/12 m-auto">
-              <div className="bg-yellow rounded shadow-2xl sm:p-10">
+            <div className="w-full xl:px-8 md:w-10/12 lg:w-8/12 m-auto">
+              <div className="bg-yellow rounded shadow-2xl p-2 sm:p-10">
                 <div className=" w-4/12 m-auto">
                     {<Lottie animationData={food} loop={true}></Lottie>}
                 </div>
@@ -99,7 +90,7 @@ const AddService = () => {
                         <img src="https://i.ibb.co/k4CCmVP/3377055-bowl-food-noodle-ramen-icon-1.png" alt=""  className='absolute left-[-5px] top-0 text-black' />
                         <input
                         onBlur={handleInputData}
-                        placeholder="Service URL"
+                        placeholder="Service Image URL"
                         required
                         type="text"
                         className="py-3 w-full bg-white border border-gray-300 rounded-full shadow-sm flex-grow px-4  transition duration-200 placeholder:text-black font-medium  outline-none pl-12 bg-none"

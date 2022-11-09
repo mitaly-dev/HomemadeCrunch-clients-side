@@ -10,11 +10,11 @@ const About = () => {
             </div>
             <div className="flex flex-col col-span-12 p-6 divide-y lg:col-span-6 lg:p-10 divide-gray-700">
                 <div className="pt-6 pb-4 space-y-2">
-                    <h1 className="text-4xl lg:text-5xl font-bold lg:leading-[60px]">
+                    <h1 className="text-4xl lg:text-5xl mb-10 font-bold lg:leading-[60px]">
                         Sit at Home <br></br>
                        <span className='text-yellow'> We Will Take Care</span>
                     </h1>
-                  <div className='sm:grid sm:grid-cols-2  xl:grid-cols-4  gap-5 bg-yellow justify-between p-10 rounded-xl text-black text-center mb-10 space-y-5'>
+                  <div className='sm:grid sm:grid-cols-2  xl:grid-cols-4  gap-5 bg-yellow justify-between p-10 my-16 rounded-xl text-black text-center mb-10 space-y-5'>
                     <div>
                         <img src="https://i.ibb.co/W6jSxbC/fast-delivery.png" alt="" className='w-[60px] m-auto'/>
                         <div className='font-bold  mt-5'>
@@ -44,7 +44,6 @@ const About = () => {
                         </div>
                     </div>
                   </div>
-                  <button className='bg-yellow py-4 px-10 font-semibold flex rounded-full items-center text-lg text-black'>Read More<FaServicestack className='text-[13px] ml-2'></FaServicestack></button>
                 </div>
             </div>
         </div>
