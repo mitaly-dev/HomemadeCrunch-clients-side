@@ -24,12 +24,12 @@ import PrivateRoute from "./PrivateRoute";
         {path:'/login',element:<Login></Login>},
         {path:'/register',element:<Register></Register>},
         {path:'/serviceDetails/:id',
-        loader:async({params})=>fetch(`http://localhost:5000/services/${params.id}`),
+        loader:async({params})=>fetch(`https://homemade-crunch-server.vercel.app/services/${params.id}`),
         element:<ServiceDetails></ServiceDetails>
         },
         {path:'/myreviews',element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>},
         {path:'/blog',
-        loader:async()=>fetch("http://localhost:5000/blog"),
+        loader:async()=>fetch("https://homemade-crunch-server.vercel.app/blog"),
         element:<Blog></Blog>},
         {path:'/addService',element:<PrivateRoute><AddService></AddService></PrivateRoute>}
     ]

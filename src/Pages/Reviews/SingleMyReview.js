@@ -12,7 +12,7 @@ const SingleMyReview = ({reviewItem}) => {
     const deleteReview=()=>{
         const sure = window.confirm('Are you sure , you want to delete this review ?')
         if(sure){
-            fetch(`http://localhost:5000/myreviews/${_id}`,{
+            fetch(`https://homemade-crunch-server.vercel.app/myreviews/${_id}`,{
             method:'DELETE',
             headers:{
                 authorization:`Bearer ${localStorage.getItem('HomemadeCrunch-Token')}`

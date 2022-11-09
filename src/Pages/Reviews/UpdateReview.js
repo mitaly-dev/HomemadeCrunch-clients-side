@@ -38,7 +38,7 @@ const UpdateReview = ({reviewItem}) => {
         }
        
         if(ratings && reviews){
-            fetch(`http://localhost:5000/myreviews/${_id}`,{
+            fetch(`https://homemade-crunch-server.vercel.app/myreviews/${_id}`,{
                 method:'PATCH',
                 headers:{
                     'content-type':'application/json',

@@ -18,7 +18,7 @@ const AllService = () => {
     },[])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/services?productSize=${size}&pageSize=${page}`)
+        fetch(`https://homemade-crunch-server.vercel.app/services?productSize=${size}&pageSize=${page}`)
         .then(res=>res.json())
         .then(data=>{
             setStatus(data.status)

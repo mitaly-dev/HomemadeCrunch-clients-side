@@ -11,7 +11,7 @@ const ServiceReviews = ({servicesId}) => {
     const [reviews,setReviews] = useState([])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews?serviceId=${servicesId}`)
+        fetch(`https://homemade-crunch-server.vercel.app/reviews?serviceId=${servicesId}`)
         .then(res=>res.json())
         .then(data=>{
             let result = data.data

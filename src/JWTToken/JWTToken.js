@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 
 
 export const jwtToken=(email,navigation)=>{
-    fetch('http://localhost:5000/jwt',{
+    fetch('https://homemade-crunch-server.vercel.app/jwt',{
         method:'POST',
         headers:{
             'content-type':'application/json'
