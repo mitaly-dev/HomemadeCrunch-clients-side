@@ -9,6 +9,9 @@ const Blog = () => {
     useTitle('Blog')
 
     useEffect(()=>{
+        window.scrollTo(0, 0)
+    },[])
+    useEffect(()=>{
         fetch("https://homemade-crunch-server.vercel.app/blog")
         .then(res=>res.json())
         .then(data=>{

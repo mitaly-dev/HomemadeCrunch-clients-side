@@ -11,7 +11,7 @@ const Navbar = () => {
     
     const logOutHandle=()=>{
       logOut()
-      .then(()=>toast.warning('Lof Out successfull',{autoClose:1000}))
+      .then(()=>toast.warning('Lof Out',{autoClose:1000}))
   }
 
     const menu = <>
@@ -83,7 +83,7 @@ const Navbar = () => {
               }
             </>
     return (
-        <div className="bg-black">
+        <div className="bg-black sticky top-0 z-50">
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl py-5 md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between">
             <Link

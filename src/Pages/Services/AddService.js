@@ -4,6 +4,7 @@ import food from '../../assets/LottieAnimation/food.json'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import useTitle from '../../Hook/useTitle';
+import { useEffect } from 'react';
 
 const AddService = () => {
     useTitle('AddService')
@@ -15,6 +16,9 @@ const AddService = () => {
      image:""
     })
     const {service,price,rating,description,image} = formData
+    useEffect(()=>{
+      window.scrollTo(0, 0)
+    },[])
     
     // get input value
     const handleInputData=(event)=>{

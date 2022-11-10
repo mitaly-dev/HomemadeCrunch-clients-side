@@ -15,7 +15,10 @@ const MyReviews = () => {
     useTitle('MyReview')
 
     useEffect(()=>{
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
+      },[])
+      
+    useEffect(()=>{
         fetch(`https://homemade-crunch-server.vercel.app/myreviews?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('HomemadeCrunch-Token')}`

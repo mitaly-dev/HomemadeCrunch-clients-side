@@ -56,7 +56,7 @@ const UpdateReview = ({reviewItem}) => {
             .then(data=>{
                if(data.modifiedCount>0){
                 setMyReviewRefresh(!myReviewRefresh)
-                toast.success('Review added successfull',{autoClose:1000})
+                toast.success('Review update successfull',{autoClose:1000})
                 form.reset()
                }
             })
