@@ -14,9 +14,8 @@ const ServiceReviews = ({servicesId}) => {
         fetch(`https://homemade-crunch-server.vercel.app/reviews?serviceId=${servicesId}`)
         .then(res=>res.json())
         .then(data=>{
-            let result = data.data
-            setReviews(result.reverse())
             setStatus(data.status)
+            setReviews(data.data)
         })
     },[reviewRefresh])
   

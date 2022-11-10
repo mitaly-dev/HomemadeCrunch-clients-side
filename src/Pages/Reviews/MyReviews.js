@@ -33,8 +33,7 @@ const MyReviews = () => {
         })
         .then(data=>{
            setStatus(data.status)
-            let result = data.data
-           setReviews(result.reverse())
+           setReviews(data.data)
         }
         )
     },[myReviewRefresh])
