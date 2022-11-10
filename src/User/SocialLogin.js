@@ -7,7 +7,7 @@ import { AuthContext } from '../Context/AuthProvider';
 import { jwtToken } from '../JWTToken/JWTToken';
 
 const SocialLogin = () => {
-    const {signWithGoogle} = useContext(AuthContext)
+    const {signWithGoogle,setLoading} = useContext(AuthContext)
     let navigate = useNavigate()
     let location = useLocation()
     let from = location.state?.from?.pathname || "/";
@@ -22,7 +22,10 @@ const SocialLogin = () => {
             toast.success("Login successfull",{autoClose:1000})
             jwtToken(result.user.email,navigation)
         })
-        .catch(err=>console.log(err.message))
+        .catch(err=>{
+            setLoading(false)
+            toast.error(err.message,{autoClose:1500})
+        })
     }
 
     return (
