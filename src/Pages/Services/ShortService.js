@@ -19,7 +19,7 @@ const ShortService = () => {
 
     const content = {
         head:"Quick pick",
-        title:"Our services food"
+        title:"Our services - food"
     }
     return (
        <div className='py-6 md:py-16 px-5 md:px-16 xl:px-28'>

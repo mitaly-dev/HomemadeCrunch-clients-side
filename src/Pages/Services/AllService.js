@@ -34,7 +34,7 @@ const AllService = () => {
 
     const content = {
         head:"Quick pick",
-        title:"Our services food"
+        title:"Our services - food"
     }
     return (
         <>
